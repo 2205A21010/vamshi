@@ -1,30 +1,29 @@
 import streamlit as st
 
-st.title("2205a21010-ps10")
-
+# Define the Gen_Eff function
 def Gen_Eff(V, CL, IL, K, Rse, Ra):
-    # Correcting the formula for CUL
-    CUL = (K * IL) * 2 * (Rse + Ra)
-    # Efficiency formula
-    Eff = ((K * V * IL) / ((K * V * IL) + CL + CUL)) * 100
-    return CUL, Eff
+    CUL = (K * IL) ** 2 * (Rse + Ra)
+    Eff = (K * V * IL) / (K * V * IL + CL + CUL) * 100
+    return Eff, CUL
 
-st.text("Calculate the efficiency of DC series Generator for various loads")
+# Streamlit application
+def main():
+    # Title of the application
+    st.title("02341A0259-PS1")  # Replace with your roll number and problem statement number
 
-col1, col2 = st.columns(2)
-with col1:
-    with st.container():
-        V = st.number_input("V: in volts", value=1)
-        IL = st.number_input("IL: in amps", value=1)
-        Rse = st.number_input("Rse: in ohms", value=1)
-        Ra = st.number_input("Ra: in ohms", value=1)
-        CL = st.number_input("CL: in watts", value=1)
-        K = st.number_input("Constant (K)", value=1)
-    compute = st.button("Compute")
+    # Input fields for the parameters
+    V = st.number_input("Enter Voltage (V)", min_value=0.0)
+    CL = st.number_input("Enter Core Losses (CL) in Watts", min_value=0.0)
+    IL = st.number_input("Enter Full Load Current (IL) in Amps", min_value=0.0)
+    K = st.number_input("Enter Loading on Generator (K)", min_value=0.0)
+    Rse = st.number_input("Enter Series Field Resistance (Rse) in Ohms", min_value=0.0)
+    Ra = st.number_input("Enter Armature Resistance (Ra) in Ohms", min_value=0.0)
 
-with col2:
-    with st.container():
-        if compute:
-            cul,Eff = Gen_Eff(V, CL, IL, K, Rse, Ra)
-            st.write(f"CUL = {CUL:.2f} Watts")
-            st.write(f"Efficiency = {Eff:.2f}%")
+    # Button to calculate efficiency
+    if st.button("Calculate Efficiency"):
+        Eff, CUL = Gen_Eff(V, CL, IL, K, Rse, Ra)
+        st.success(f"Efficiency: {Eff:.2f}%")
+        st.success(f"Copper Losses (CUL): {CUL:.2f} Watts")
+
+if __name__ == "__main__":
+    main()
