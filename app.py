@@ -2,14 +2,23 @@ import streamlit as st
 
 # Define the Gen_Eff function
 def Gen_Eff(V, CL, IL, K, Rse, Ra):
+    # Calculate Copper Losses (CUL)
     CUL = (K * IL) ** 2 * (Rse + Ra)
-    Eff = (K * V * IL) / (K * V * IL + CL + CUL) * 100
+    
+    # Calculate Efficiency (Eff)
+    denominator = K * V * IL + CL + CUL
+    
+    if denominator == 0:
+        Eff = 0  # Avoid division by zero
+    else:
+        Eff = (K * V * IL) / denominator * 100
+    
     return Eff, CUL
 
 # Streamlit application
 def main():
     # Title of the application
-    st.title("2205A21010-PS1")  # Replace with your roll number and problem statement number
+    st.title("02341A0259-PS1")  # Replace with your roll number and problem statement number
 
     # Input fields for the parameters
     V = st.number_input("Enter Voltage (V)", min_value=0.0)
