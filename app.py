@@ -9,7 +9,7 @@ def Gen_Eff(V, CL, IL, K, Rse, Ra):
 # Streamlit application
 def main():
     # Title of the application
-    st.title("02341A0259-PS1")  # Replace with your roll number and problem statement number
+    st.title("2205A21010-PS1")  # Replace with your roll number and problem statement number
 
     # Input fields for the parameters
     V = st.number_input("Enter Voltage (V)", min_value=0.0)
