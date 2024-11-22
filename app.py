@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("02341A0259-ps10")
+st.title("2205a21010-ps10")
 
 def Gen_Eff(V, CL, IL, K, Rse, Ra):
     # Correcting the formula for CUL
