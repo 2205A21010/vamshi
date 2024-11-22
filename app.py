@@ -18,7 +18,7 @@ def Gen_Eff(V, CL, IL, K, Rse, Ra):
 # Streamlit application
 def main():
     # Title of the application
-    st.title("02341A0259-PS1")  # Replace with your roll number and problem statement number
+    st.title("2205a21010-vamshi-PS1")  # Replace with your roll number and problem statement number
 
     # Create two columns for inputs and outputs
     col1, col2 = st.columns(2)
