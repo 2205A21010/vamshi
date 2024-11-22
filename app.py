@@ -25,6 +25,6 @@ with col1:
 with col2:
     with st.container():
         if compute:
-            CUL, Eff = Gen_Eff(V, CL, IL, K, Rse, Ra)
+            cul,Eff = Gen_Eff(V, CL, IL, K, Rse, Ra)
             st.write(f"CUL = {CUL:.2f} Watts")
             st.write(f"Efficiency = {Eff:.2f}%")
